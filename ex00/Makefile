@@ -1,4 +1,5 @@
 NAME	= BrainZ
+
 SRC		= main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 OBJ		= ${SRC:%.cpp=objects/%.o}
 
