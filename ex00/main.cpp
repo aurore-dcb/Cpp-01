@@ -2,16 +2,12 @@
 
 int main()
 {
-    Zombie* zombie[3];
+    std::string name;
 
-    zombie[0] = newZombie("Po");
-    zombie[0]->announce();
-    zombie[1] = newZombie("YEA");
-    zombie[1]->announce();
-    zombie[2] = newZombie("aur");
-    zombie[2]->announce();
-    delete zombie[0];
-    delete zombie[1];
-    delete zombie[2];
+    for(int i = 0 ; i < 3 ; i++) {
+        std::cout << "Choose a name for a new Zombie : ";
+        std::cin >> name;
+        randomChump(name);
+    }
     return (0);
 }

@@ -2,14 +2,13 @@
 
 Zombie::Zombie( void ) {
 
-    // _name = "bou";
     std::cout << "Constructor Zombie called" << std::endl;
     return;
 }
 
 Zombie::~Zombie( void ) {
 
-    std::cout << "Destructor Zombie called" << std::endl;
+    std::cout << "Destructor Zombie named " << _name << " called" << std::endl;
     return;
 }
 

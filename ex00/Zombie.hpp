@@ -4,7 +4,6 @@
 #include <string>
 #include <iostream>
 
-
 class Zombie {
 
     public :
@@ -20,6 +19,6 @@ class Zombie {
 };
 
 Zombie* newZombie( std::string name );
-void randomChump( std::string name );
+void    randomChump( std::string name );
 
 #endif
