@@ -1,21 +1,26 @@
 #include "Weapon.hpp"
 
-Weapon::Weapon( void ) {
+Weapon::Weapon( void ) { // Constructeur par defaut
 
-    std::cout << "Constructeur Weapon called" << std::endl;
+    std::cout << "Constructeur default Weapon called" << std::endl;
+    return ;
+}
+
+Weapon::Weapon(std::string type) : _type(type){
+
+    std::cout << "Weapon created: " << _type << std::endl;
     return ;
 }
 
 Weapon::~Weapon( void ) {
 
-    std::cout << "Destructeur Weapon called" << std::endl;
+    std::cout << "Weapon destroyed: " << _type << std::endl;
     return ;
 }
 
-const std::string& Weapon::getType(void) const {
+std::string const & Weapon::getType(void) const {
 
-    const std::string& typeREF = this->_type;
-    return (typeREF);
+    return this->_type;
 }
 
 void Weapon::setType(std::string type) {
