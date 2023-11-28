@@ -1,6 +1,6 @@
 #include "Weapon.hpp"
 
-Weapon::Weapon( void ) { // Constructeur par defaut
+Weapon::Weapon( void ) {
 
     std::cout << "Constructeur default Weapon called" << std::endl;
     return ;
@@ -8,13 +8,13 @@ Weapon::Weapon( void ) { // Constructeur par defaut
 
 Weapon::Weapon(std::string type) : _type(type){
 
-    std::cout << "Weapon created: " << _type << std::endl;
+    std::cout << GREEN << "Weapon '" << _type << "' is created" << std::endl;
     return ;
 }
 
 Weapon::~Weapon( void ) {
 
-    std::cout << "Weapon destroyed: " << _type << std::endl;
+    std::cout << RED << "Weapon '" << _type << "' is destroyed" << std::endl;
     return ;
 }
 
@@ -26,4 +26,5 @@ std::string const & Weapon::getType(void) const {
 void Weapon::setType(std::string type) {
 
     this->_type = type;
+    std::cout << GREEN << "Wepon '" << type << "' is set" << std::endl; 
 }

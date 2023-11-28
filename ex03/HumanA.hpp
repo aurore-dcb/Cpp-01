@@ -12,7 +12,6 @@ class HumanA {
         ~HumanA( void );
         void attack(void);
 
-        // HumanA( void );
         
     private :
 

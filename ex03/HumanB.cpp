@@ -1,27 +1,27 @@
 #include "HumanB.hpp"
 
-HumanB::HumanB( std::string name ) : _name(name) {
+HumanB::HumanB( std::string name ) : _weapon(NULL), _name(name){
 
-    std::cout << "HumanB: " << _name << std::endl;
+    std::cout << "HumanB " << _name << " created without weapon" << std::endl;
     return ;
 }
 
 HumanB::~HumanB( void ) {
 
-    delete _weapon;
-    std::cout << "Destructor HumanB called" << std::endl;
+    std::cout << RED << _name << " is destroyed" << std::endl;
     return ;
 }
 
 void HumanB::attack(void) const{
 
-    std::cout << _name << " attacks with their " << _weapon->getType();
-    std::cout << std::endl;
+    if (_weapon == NULL)
+        std::cout << ORANGE << _name << " attacks bare hands" << std::endl;
+    else
+        std::cout << ORANGE << _name << " attacks with their " << _weapon->getType() << std::endl;
 }
 
-void HumanB::setWeapon(Weapon weapon) {
+void HumanB::setWeapon(Weapon const & weapon) {
 
-    // delete _weapon;
-
-    _weapon = new Weapon(weapon);
+    _weapon = &weapon;
+    std::cout << GREEN << "Wepon '" << _weapon->getType() << "' is set" << std::endl; 
 }
