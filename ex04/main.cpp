@@ -9,49 +9,49 @@ int main(int argc, char **argv)
         std::cerr << "Wrong number of arguments" << std::endl;
         return (1);
     }
-    std::string filename = argv[1];
+    std::string s1 = argv[2];
+    std::string s2 = argv[3];
     std::ifstream infile(argv[1]);
-    std::ofstream outfile ((filename + ".replace").c_str());
+    std::ofstream outfile((std::string(argv[1]) + ".replace").c_str());
     if (infile && outfile)
     {
         std::string line;
-        // infile.seekg(0);
-        // std::getline(infile, line);
-        unsigned long int occ = 0;
-        // for (int i = 0; i < 9 ; i++)
+        size_t occ = 0;
         while (!infile.eof())
         {
+            bool modif = false;
             std::getline(infile, line);
-            occ = line.find( "test" );
-            if (occ != std::string::npos)
+            if (infile.bad() || (infile.fail() && !infile.eof()))
             {
-                unsigned long int j = 0;
-                for (j = 0 ; j < occ ; j++)
-                {
-                    outfile << line[j];
-                }
-                outfile << "TEST";
-                std::cout << "pos : " << j << std::endl;
-                j = j + 4; // j + taille de la chaine a chercher (qu'on a trouve)
-                std::cout << "line : " << line << std::endl;
-                std::cout << "j : " << j << std::endl;
-                std::cout << "line[j] : " << line[j] << std::endl;
-                std::cout << "line.size() : " << line.size() << std::endl;
-                for (unsigned long int i = j ; i < line.size() ; i++)
-                {
-                    outfile << line[i];
-                }
+                std::cerr << "Error: while reading file" << std::endl;
+                return (1);
             }
-            else
+            size_t j = 0;
+            while ((occ = line.find(s1, j)) != std::string::npos)
+            {
+                modif = true;
+                while (j < occ)
+                    outfile << line[j++];
+                outfile << s2;
+                j = j + s1.length();
+                occ = line.find(s1, j);
+                if (occ == std::string::npos)
+                    for (size_t i = j ; i < line.size() ; i++)
+                        outfile << line[i];
+            }
+            if (modif == false)
                 outfile << line;
-            
-            outfile << std::endl;
+            if (!infile.eof())
+                outfile << std::endl;
         }
-
+        return (0);
     }
     else if (!infile)
+    {
         std::cerr << "Error: can't open infile" << std::endl;
+        remove((std::string(argv[1]) + ".replace").c_str());
+    }
     else if (!outfile)
         std::cerr << "Error: can't open outfile" << std::endl;
-    return (0);
+    return (1);
 }

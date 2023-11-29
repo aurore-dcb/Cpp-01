@@ -1,12 +1,12 @@
-NAME	= sed
+NAME	= Sed
 
-SRC		= main.cpp #
+SRC		= main.cpp
 OBJ		= ${SRC:%.cpp=objects/%.o}
 
 CC		= c++
 FLAGS	= -Wall -Wextra -Werror -std=c++98 -g3
 
-${NAME}: ${OBJ} #.hpp
+${NAME}: ${OBJ}
 		${CC} ${FLAGS} -o ${NAME} ${OBJ}
 
 objects/%.o: %.cpp
@@ -20,6 +20,7 @@ clean:
 
 fclean: clean
 		rm -rf ${NAME}
+		rm -rf *.replace
 
 re:		fclean all
 
