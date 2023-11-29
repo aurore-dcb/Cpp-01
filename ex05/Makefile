@@ -1,12 +1,12 @@
-NAME	= Sed
+NAME	= Harl
 
-SRC		= main.cpp
+SRC		= main.cpp Harl.cpp
 OBJ		= ${SRC:%.cpp=objects/%.o}
 
 CC		= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98
+FLAGS	= -Wall -Wextra -Werror -std=c++98 -g3
 
-${NAME}: ${OBJ}
+${NAME}: ${OBJ} *.hpp
 		${CC} ${FLAGS} -o ${NAME} ${OBJ}
 
 objects/%.o: %.cpp
@@ -20,7 +20,6 @@ clean:
 
 fclean: clean
 		rm -rf ${NAME}
-		rm -rf *.replace
 
 re:		fclean all
 
