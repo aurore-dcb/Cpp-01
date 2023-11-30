@@ -10,8 +10,8 @@ ${NAME}: ${OBJ} *.hpp
 		 ${CC} ${FLAGS} -o ${NAME} ${OBJ}
 
 objects/%.o: %.cpp
-		 mkdir -p $(dir $@)
-		${CC} ${FLAGS} -c -o $@ @^
+			mkdir -p $(dir $@)
+			${CC} ${FLAGS} -c -o $@ $^
 
 all:	${NAME}
 
